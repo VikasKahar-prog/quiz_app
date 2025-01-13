@@ -1,0 +1,179 @@
+[
+    {
+        "question": "What is the CPU?",
+        "image": "images/cpu.png",
+        "options": ["Memory", "Processor", "Storage", "Input Device"],
+        "answer": 1
+    },
+    {
+        "question": "What does RAM stand for?",
+        "image": "images/ram.png",
+        "options": ["Random Access Memory", "Read Only Memory", "Read And Write Memory", "Remote Access Memory"],
+        "answer": 0
+    },
+    {
+        "question": "Which device is used to print documents?",
+        "image": "images/printer.png",
+        "options": ["Monitor", "Keyboard", "Printer", "Scanner"],
+        "answer": 2
+    },
+    {
+        "question": "What is the smallest unit of data in a computer?",
+        "image": "images/bit.png",
+        "options": ["Byte", "Bit", "Nibble", "Word"],
+        "answer": 1
+    },
+    {
+        "question": "Which of these is an input device?",
+        "image": "images/input_device.png",
+        "options": ["Monitor", "Mouse", "Speaker", "Printer"],
+        "answer": 1
+    },
+    {
+        "question": "What does ROM stand for?",
+        "image": "images/rom.png",
+        "options": ["Read Only Memory", "Random Operating Memory", "Read Operational Memory", "Remote Output Memory"],
+        "answer": 0
+    },
+    {
+        "question": "Which part of the computer is responsible for calculations?",
+        "image": "images/calculation.png",
+        "options": ["RAM", "CPU", "Hard Drive", "Monitor"],
+        "answer": 1
+    },
+    {
+        "question": "What does HTTP stand for?",
+        "image": "images/http.png",
+        "options": ["Hyper Text Transfer Protocol", "High Transfer Text Protocol", "Hyperlink Transfer Text Protocol", "High Text Transfer Protocol"],
+        "answer": 0
+    },
+    {
+        "question": "Which memory is volatile?",
+        "image": "images/volatile_memory.png",
+        "options": ["RAM", "ROM", "Hard Disk", "DVD"],
+        "answer": 0
+    },
+    {
+        "question": "Which of these is NOT an operating system?",
+        "image": "images/os.png",
+        "options": ["Windows", "Linux", "MacOS", "Photoshop"],
+        "answer": 3
+    },
+    {
+        "question": "What does GUI stand for?",
+        "image": "images/gui.png",
+        "options": ["Graphical User Interface", "General User Interaction", "Graph Utility Integration", "General User Interface"],
+        "answer": 0
+    },
+    {
+        "question": "Which is the primary language of the web?",
+        "image": "images/html.png",
+        "options": ["HTML", "C++", "Python", "Java"],
+        "answer": 0
+    },
+    {
+        "question": "What does IP stand for in networking?",
+        "image": "images/ip.png",
+        "options": ["Internet Protocol", "Internal Program", "Integrated Process", "Internet Provider"],
+        "answer": 0
+    },
+    {
+        "question": "What is the function of a router?",
+        "image": "images/router.png",
+        "options": ["Store files", "Connect networks", "Display data", "Process commands"],
+        "answer": 1
+    },
+    {
+        "question": "Which of the following is an example of system software?",
+        "image": "images/system_software.png",
+        "options": ["Linux", "Google Chrome", "MS Word", "Photoshop"],
+        "answer": 0
+    },
+    {
+        "question": "What is the shortcut for 'Copy' on most computers?",
+        "image": "images/keyboard.png",
+        "options": ["Ctrl + V", "Ctrl + X", "Ctrl + C", "Ctrl + Z"],
+        "answer": 2
+    },
+    {
+        "question": "Which key is used to delete text to the left of the cursor?",
+        "image": "images/backspace.png",
+        "options": ["Delete", "Backspace", "Insert", "Escape"],
+        "answer": 1
+    },
+    {
+        "question": "What does URL stand for?",
+        "image": "images/url.png",
+        "options": ["Uniform Resource Locator", "Universal Resource Link", "Unified Routing Locator", "Unique Resource Locator"],
+        "answer": 0
+    },
+    {
+        "question": "What does SMTP stand for?",
+        "image": "images/smtp.png",
+        "options": ["Simple Mail Transfer Protocol", "Simple Mail Text Protocol", "Standard Mail Text Protocol", "Simple Management Transfer Protocol"],
+        "answer": 0
+    },
+    {
+        "question": "Which of these is an example of a cloud storage service?",
+        "image": "images/cloud_storage.png",
+        "options": ["Google Drive", "MS Paint", "VLC Media Player", "WinRAR"],
+        "answer": 0
+    },
+    {
+        "question": "Which language is primarily used for Android app development?",
+        "image": "images/android.png",
+        "options": ["Java", "Python", "C++", "Ruby"],
+        "answer": 0
+    },
+    {
+        "question": "Which device is used for long-term data storage?",
+        "image": "images/storage.png",
+        "options": ["RAM", "Hard Drive", "Processor", "Cache"],
+        "answer": 1
+    },
+    {
+        "question": "What is the purpose of a firewall?",
+        "image": "images/firewall.png",
+        "options": ["Speed up data transfer", "Block unauthorized access", "Store data securely", "Optimize system performance"],
+        "answer": 1
+    },
+    {
+        "question": "What is the full form of BIOS?",
+        "image": "images/bios.png",
+        "options": ["Basic Input Output System", "Binary Input Output System", "Basic Integrated Output System", "Binary Integrated Output System"],
+        "answer": 0
+    },
+    {
+        "question": "Which device is primarily used for gaming input?",
+        "image": "images/joystick.png",
+        "options": ["Mouse", "Joystick", "Keyboard", "Scanner"],
+        "answer": 1
+    },
+    {
+        "question": "Which of these is an output device?",
+        "image": "images/output_device.png",
+        "options": ["Mouse", "Printer", "Scanner", "Keyboard"],
+        "answer": 1
+    },
+    {
+        "question": "What is the purpose of a database?",
+        "image": "images/database.png",
+        "options": ["Store data", "Process images", "Edit videos", "Render graphics"],
+        "answer": 0
+    },
+    {
+        "question": "What does SSD stand for?",
+        "image": "images/ssd.png",
+        "options": ["Solid State Drive", "Secure Storage Device", "Solid System Drive", "Smart Storage Device"],
+        "answer": 0
+    },
+    {
+        "question": "What is the primary function of an antivirus?",
+        "image": "images/antivirus.png",
+        "options": ["Protect against malware", "Speed up the system", "Optimize memory", "Monitor network speed"],
+        "answer": 0
+    }
+    
+    
+]
+
