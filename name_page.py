@@ -20,7 +20,7 @@ class NamePage(ctk.CTk):
 
         self.bind("<f>",self.toggle_fullscreen)
 
-        self.name_frame = ctk.CTkFrame(self,self.parent_frame,bg_color="#ffbe0b")
+        self.name_frame = ctk.CTkFrame(self.parent_frame,fg_color="#ffbe0b")
         self.name_frame.pack(fill = "both",expand = True)
 
         self.add_frame_method("namepage",self.name_frame)

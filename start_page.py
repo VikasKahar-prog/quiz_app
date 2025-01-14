@@ -66,11 +66,9 @@ class CountdownPage(ctk.CTk):
             self.gif_canvas.itemconfig(self.gif_id, image=self.gif_image)
             self.frame_count += 1
 
-            if time.time() - self.start_time<5:
+            if (time.time() - self.start_time<4):
                 self.after(25, self.animate_gif)
             else:
-                #self.destroy()
-                #os.system("quiz_page.py")
                 quiz_page_object = QuizPage(self.parent_frame,self.add_frame_method,self.navigate_frame_method,"Quiz Page")
                 self.navigate_frame_method("startpage","quizpage")
 

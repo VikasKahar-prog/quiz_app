@@ -18,8 +18,8 @@ class PopUp(ctk.CTk):
         self.geometry('{}x{}+{}+{}'.format(self.width,self.height,500,300))
         #self.config(bg="#ffbe0b")
 
-        self.popup_frame = ctk.CTkFrame(self.parent_frame,bg_color="#ffbe0b")
-        self.popup_frame.pack(fill = "both",expand = True)
+        self.popup_frame = ctk.CTkFrame(self.parent_frame,fg_color="#ffbe0b",height=300,width=400)
+        self.popup_frame.pack(anchor = "center")
 
         self.add_frame_method("popup",self.popup_frame)
 
