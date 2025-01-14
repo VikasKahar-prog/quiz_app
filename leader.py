@@ -4,15 +4,25 @@ from PIL import Image,ImageTk
 import tkinter.messagebox as msg
 
 class LeaderBoard(ctk.CTk):
-    def __init__(self):
+    def __init__(self,parent_frame,add_frame,navigate_frame,newtitle):
         super().__init__()
+        self.parent_frame = parent_frame
+        self.add_frame_method = add_frame
+        self.navigate_frame_method = navigate_frame
+        self.newtitle = newtitle
+
         self.width = self.winfo_screenwidth()
         self.height = self.winfo_screenheight()
         self.geometry('{}x{}+{}+{}'.format(self.width,self.height,-10,-5))
-        self.title("Leader Board")
-        self.config(bg="#ffbe0b")
+        self.title(self.newtitle)
+        #self.config(bg="#ffbe0b")
 
-        self.main_frame = ctk.CTkScrollableFrame(self,corner_radius=20,border_width=1,border_color="#000000",fg_color="#ffffff",bg_color="#ffbe0b",scrollbar_fg_color="lightgray",scrollbar_button_hover_color="gray",orientation="vertical")
+        self.leader_frame = ctk.CTkFrame(self.parent_frame,bg_color="#ffbe0b")
+        self.leader_frame.pack(fill = "both",expand = True)
+
+        self.add_frame_method("leaderboard",self.leader_frame)
+
+        self.main_frame = ctk.CTkScrollableFrame(self.leader_frame,corner_radius=20,border_width=1,border_color="#000000",fg_color="#ffffff",bg_color="#ffbe0b",scrollbar_fg_color="lightgray",scrollbar_button_hover_color="gray",orientation="vertical")
         self.main_frame.pack(fill = "both",expand = True,padx = (25,25),pady = (35,60))
 
         self.leader_lbl = ctk.CTkLabel(self.main_frame,text = "LEADER BOARD",text_color="#000000",fg_color="#ffffff",font = ctk.CTkFont(family = "Impact",size = 45,weight = "normal"))
@@ -37,6 +47,6 @@ class LeaderBoard(ctk.CTk):
         self.time_lbl.place(x = 1030,y = 50)
 
 
-
+'''
 leader = LeaderBoard()
-leader.mainloop()
+leader.mainloop()'''

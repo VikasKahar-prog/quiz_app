@@ -1,20 +1,31 @@
 import customtkinter as ctk
 import tkinter as tk
 from tkinter import messagebox
+from start_page import CountdownPage
 from PIL import Image,ImageTk
 
 class NamePage(ctk.CTk):
-    def __init__(self):
+    def __init__(self,parent_frame,add_frame,navigate_frame,newtitle):
         super().__init__()
+        self.parent_frame = parent_frame
+        self.add_frame_method = add_frame
+        self.navigate_frame_method = navigate_frame
+        self.newtitle = newtitle
+
         self.width = self.winfo_screenwidth()
         self.height = self.winfo_screenheight()
         self.geometry('{}x{}+{}+{}'.format(self.width,self.height,0,0))
-        self.title("NamePage")
-        self.config(bg="#ffbe0b")
+        self.title(self.newtitle)
+        #self.config(bg="#ffbe0b")
 
         self.bind("<f>",self.toggle_fullscreen)
 
-        self.middle_frame = ctk.CTkFrame(self,width = 550,height = 400,fg_color="#001d3d",bg_color="#001d3d",corner_radius=20)
+        self.name_frame = ctk.CTkFrame(self,self.parent_frame,bg_color="#ffbe0b")
+        self.name_frame.pack(fill = "both",expand = True)
+
+        self.add_frame_method("namepage",self.name_frame)
+
+        self.middle_frame = ctk.CTkFrame(self.name_frame,width = 550,height = 400,fg_color="#001d3d",bg_color="#001d3d",corner_radius=20)
         self.middle_frame.place(x = 350,y = 120)
 
         self.name_label = ctk.CTkLabel(self.middle_frame,text="Name",width=150,height=50,corner_radius=15,fg_color="#ffffff",text_color="#000000",font = ctk.CTkFont(family = "Cursive",size = 20,weight = "bold"))
@@ -27,7 +38,6 @@ class NamePage(ctk.CTk):
         self.name_entry.bind("<FocusOut>",self.usr_focus_out)
         self.name_entry.place(x = 130,y = 170)
 
-
         self.play_img = ctk.CTkImage(dark_image=Image.open("images/play-button-arrowhead.png"),size=(30,30))
 
         self.play_button = ctk.CTkButton(self.middle_frame,width = 150,image=self.play_img,height=50,corner_radius=20,text="Play",text_color="#000000",fg_color="#ffbe0b",hover_color="#FFD54F",font = ctk.CTkFont(family = "Helvetica",size = 20,weight="bold"),command=self.checkUser)
@@ -39,6 +49,9 @@ class NamePage(ctk.CTk):
     def checkUser(self):
         if self.name_value.get() == "" or self.name_value.get() == "Enter your name:":
             messagebox.showwarning(title="Warning",message="Please enter your name:")
+        else:
+            start_page_object =  CountdownPage(self.parent_frame,self.add_frame_method,self.navigate_frame_method,"Start Page")
+            self.navigate_frame_method("namepage","startpage")
 
     def usr_focus_in(self,event):
         if self.name_value.get() == "Enter your name:":
@@ -48,7 +61,7 @@ class NamePage(ctk.CTk):
         if self.name_value.get() == "":
             self.name_entry.insert(0,"Enter your name:")
 
-
+'''
 namepage = NamePage()
-namepage.mainloop()
+namepage.mainloop()'''
                       

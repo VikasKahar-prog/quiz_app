@@ -1,18 +1,28 @@
 import customtkinter as ctk 
 import tkinter as tk
 from PIL import Image,ImageTk
+from popup import PopUp
 import json
 
 
 class QuizPage(ctk.CTk):
-    def __init__(self):
+    def __init__(self,parent_frame,add_frame,navigate_frame,newtitle):
         super().__init__()
+        self.parent_frame = parent_frame
+        self.add_frame_method = add_frame
+        self.navigate_frame_method = navigate_frame
+        self.newtitle = newtitle
+
         self.width = self.winfo_screenwidth()
         self.height = self.winfo_screenheight()        
         self.geometry('{}x{}+{}+{}'.format(self.width,self.height,-10,0))
-        self.title("Quiz App")
-        self.config(bg="#ffbe0b")
+        self.title(self.newtitle)
+        #self.config(bg="#ffbe0b")
 
+        self.quiz_page = ctk.CTkFrame(self.parent_frame,bg_color="#ffbe0b")
+        self.quiz_page.pack(fill = "both",expand = True)
+
+        self.add_frame_method("quizpage",self.quiz_page)
 
         self.questions = self.load_questions()
         self.current_question = 0
@@ -66,7 +76,6 @@ class QuizPage(ctk.CTk):
         if self.current_question == len(self.questions) - 1:
             self.next_button.configure(text = "SUBMIT", command = self.end_quiz)
         else:
-    
             self.next_button.configure(text = "NEXT", command = self.next_question)
     
     def next_question(self):
@@ -91,7 +100,7 @@ class QuizPage(ctk.CTk):
             button.configure(state = tk.DISABLED)
 
     def create_widgets(self):
-        self.question_frame = ctk.CTkFrame(self, width = 1300, height = 800, fg_color="#003049", bg_color="#ffbe0b")
+        self.question_frame = ctk.CTkFrame(self.quiz_page, width = 1300, height = 800, fg_color="#003049", bg_color="#ffbe0b")
 
         self.question_label = ctk.CTkLabel(self.question_frame, text="Hello", font = ("Helvetica", 20))
         self.question_label.place(x = 700, y = 150)
@@ -123,30 +132,26 @@ class QuizPage(ctk.CTk):
         if(self.remaining_time > 0):
             self.after(1000, self.update_timer)
         else:
-            # self.next_question()
             self.end_quiz()
 
     def update_timer(self):
         self.remaining_time -= 1
-        self.timer_label.configure(text = f"Time Left: {self.remaining_time}")
-        if(self.remaining_time > 0):
-            self.after(1000, self.update_timer)
-        else:
-            # self.next_question()
-            self.end_quiz()
 
     def end_quiz(self):
-        self.withdraw()
+        '''self.withdraw()
 
         result_window = ctk.CTkToplevel()
         result_window.geometry("200x200")
         result_window.title("Quiz Results")
 
         self.result_label = ctk.CTkLabel(result_window, text=f"Quiz Over!\nYour Score: {self.score}", font=("Arial", 24, "bold"))
-        self.result_label.pack(pady=50)
+        self.result_label.pack(pady=50)'''
+
+        popup_object = PopUp(self.parent_frame,self.add_frame_method,self.navigate_frame_method,"PopUp Window")
+        self.navigate_frame_method("quizpage","popup")
 
         # print(f"Quiz Over! Your Score: {self.score}")
-
+'''
 if __name__ == "__main__":
     root = QuizPage()
-    root.mainloop()
+    root.mainloop()'''
