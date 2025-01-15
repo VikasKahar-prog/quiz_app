@@ -102,7 +102,7 @@ class QuizPage(ctk.CTk):
     def create_widgets(self):
         self.question_frame = ctk.CTkFrame(self.quiz_page, width = 1300, height = 800, fg_color="#003049", bg_color="#ffbe0b")
 
-        self.question_label = ctk.CTkLabel(self.question_frame, text="Hello", font = ("Helvetica", 20))
+        self.question_label = ctk.CTkLabel(self.question_frame, text="", font = ("Helvetica", 20))
         self.question_label.place(x = 700, y = 150)
 
         self.image_label = ctk.CTkLabel(self.question_frame, text = "")
@@ -120,11 +120,11 @@ class QuizPage(ctk.CTk):
         self.timer_label = ctk.CTkLabel(self.question_frame, text=f"Time Left: {self.remaining_time}", font=("Arial", 20, "bold"))
         self.timer_label.place(x = 1150, y = 20)
         
-        # self.next_button = ctk.CTkButton(self.question_frame, text="NEXT", command=self.next_question, height=38, width=150, corner_radius=10, font=("Arial", 20, "bold"), border_width=2, border_color="#ffb703", fg_color="#f77f00", text_color="black", hover_color="#ffbf69")
-        # self.next_button.place(x = 1120, y = 580)
-
         self.next_button = ctk.CTkButton(self.question_frame, text="NEXT", command=self.next_question, height=38, width=150, corner_radius=10, font=("Arial", 20, "bold"), border_width=2, border_color="#ffb703", fg_color="#f77f00", text_color="black", hover_color="#ffbf69")
-        self.next_button.place(x = 1120, y = 200)
+        self.next_button.place(x = 1120, y = 580)
+
+        # self.next_button = ctk.CTkButton(self.question_frame, text="NEXT", command=self.next_question, height=38, width=150, corner_radius=10, font=("Arial", 20, "bold"), border_width=2, border_color="#ffb703", fg_color="#f77f00", text_color="black", hover_color="#ffbf69")
+        # self.next_button.place(x = 1120, y = 200)
     
         self.question_frame.pack(anchor = "center", pady = 100)
 
@@ -152,10 +152,11 @@ class QuizPage(ctk.CTk):
         self.result_window = ctk.CTkToplevel()
         self.result_window.title("Quiz Results")
         self.result_window.configure(fg_color = "#ffbe0b")
+        self.result_window.overrideredirect(True)
 
         self.width = 600
         self.height = 300
-        self.result_window.geometry('{}x{}+{}+{}'.format(self.width,self.height,500,300))
+        self.result_window.geometry('{}x{}+{}+{}'.format(self.width,self.height,600,300))
 
         self.popup_frame = ctk.CTkFrame(self.result_window,fg_color="transparent")
         self.popup_frame.pack(anchor = "center")
@@ -178,12 +179,12 @@ class QuizPage(ctk.CTk):
         self.score_val = ctk.CTkLabel(self.popup_frame,textvariable = self.score_val,fg_color="transparent",font = ctk.CTkFont(family="Helvetica",size=40,weight="bold"))
         self.score_val.pack(anchor = "center",pady = 5)
 
-        home_image = ctk.CTkImage(dark_image=Image.open(r'C:\Users\lucky\OneDrive\Desktop\SYCS SEM3\QuizScienceMela\Science_Mela\pics_folder\home.png'),size = (20,20))
+        home_image = ctk.CTkImage(dark_image=Image.open(r'images/home.png'),size = (20,20))
 
         self.homebutton = ctk.CTkButton(self.popup_frame,corner_radius = 100,image=home_image,hover="disabled",fg_color = "#29B6F6",text = "Back to Home",text_color = "black",font = ctk.CTkFont(family = "Helvetica",weight = "normal",size = 15),command=self.go_to_home)
         self.homebutton.pack(side = "bottom",anchor = "center",pady = (0,20),ipadx = 10,ipady = 10)
 
-        self.quiz_page.configure(state = "disabled")
+        # self.quiz_page.configure(state = "disabled")
 
     def go_to_home(self):
         self.navigate_frame_method("quizpage","homepage")
