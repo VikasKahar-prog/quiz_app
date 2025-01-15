@@ -26,7 +26,7 @@ class NamePage(ctk.CTk):
         self.add_frame_method("namepage",self.name_frame)
 
         self.middle_frame = ctk.CTkFrame(self.name_frame,width = 550,height = 400,fg_color="#001d3d",bg_color="#001d3d",corner_radius=20)
-        self.middle_frame.place(x = 350,y = 120)
+        self.middle_frame.pack(anchor='center',pady=200)
 
         self.name_label = ctk.CTkLabel(self.middle_frame,text="Name",width=150,height=50,corner_radius=15,fg_color="#ffffff",text_color="#000000",font = ctk.CTkFont(family = "Cursive",size = 20,weight = "bold"))
         self.name_label.place(x = 200,y = 100)
