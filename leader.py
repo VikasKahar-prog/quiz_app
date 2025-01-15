@@ -17,7 +17,7 @@ class LeaderBoard(ctk.CTk):
         self.title(self.newtitle)
         #self.config(bg="#ffbe0b")
 
-        self.leader_frame = ctk.CTkFrame(self.parent_frame,bg_color="#ffbe0b")
+        self.leader_frame = ctk.CTkFrame(self.parent_frame,fg_color="#ffbe0b")
         self.leader_frame.pack(fill = "both",expand = True)
 
         self.add_frame_method("leaderboard",self.leader_frame)
@@ -47,6 +47,6 @@ class LeaderBoard(ctk.CTk):
         self.time_lbl.place(x = 1030,y = 50)
 
 
-'''
-leader = LeaderBoard()
-leader.mainloop()'''
+
+# leader = LeaderBoard()
+# leader.mainloop()
