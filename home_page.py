@@ -12,6 +12,7 @@ class HomePage(ctk.CTk):
         self.geometry('{}x{}+{}+{}'.format(self.width,self.height,-10,0))
         #self.config(bg="#ffbe0b")
         self.title("QUIZ APP")
+        print(self.width, self.height)
 
         self.frames = {}
 
@@ -21,7 +22,7 @@ class HomePage(ctk.CTk):
         self.home_frame = ctk.CTkFrame(self.container_frame,fg_color="#ffbe0b")
         self.home_frame.pack(fill = "both",expand = True)
 
-        self.home_frame.pack(fill = "both",expand = True)
+        # self.home_frame.pack(fill = "both",expand = True)
 
         self.add_frames("homepage",self.home_frame)
         
@@ -46,9 +47,12 @@ class HomePage(ctk.CTk):
         self.start_button = ctk.CTkButton(self.home_frame, text="START", fg_color="#001d3d", text_color="white", height=45, width=200, font=ctk.CTkFont(family="Verdana Pro", size=20, weight="bold"), corner_radius=10, bg_color="#ffbe0b",command=self.navigate_screen_to_namepage)
         self.start_button.place(x = 900, y = 430)
 
-        self.leader_board_image = ctk.CTkImage(dark_image=Image.open(r"images/winner.png"), size=(100, 100))
-        self.ld_board_button = ctk.CTkButton(self.home_frame, text="", image=self.leader_board_image, fg_color="#ffbe0b", bg_color="#ffbe0b", hover=False, cursor = "hand2",command=self.navigate_screen_to_leaderboard)
-        self.ld_board_button.place(x = 1400, y = 30)
+        self.leader_board_image = ctk.CTkImage(dark_image=Image.open("images//winner.png"), light_image=Image.open("images//winner.png"), size=(100, 100))
+        self.ld_board_button = ctk.CTkButton(self.home_frame, text = "", hover=False, image = self.leader_board_image, fg_color="#ffbe0b", bg_color="#ffbe0b",cursor = "hand2",command=self.navigate_screen_to_leaderboard)
+        self.ld_board_button.place(x = 1220, y = 20)
+
+        # self.ld_board_button = ctk.CTkButton(self.home_frame, text="", image=self.leader_board_image, fg_color="#ffbe0b", bg_color="#003049", hover=False, cursor = "hand2",command=self.navigate_screen_to_leaderboard)
+        # self.ld_board_button.pack(side = "top")
 
     def add_frames(self,name,frame_object):
         self.frames[name] = frame_object

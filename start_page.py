@@ -46,7 +46,7 @@ class CountdownPage(ctk.CTk):
             self.gif_canvas.pack(padx=10, pady=10)
 
             self.label = ctk.CTkLabel(self.frame, text = "Your Quiz Will Start in", font = ("Open Sans", 22), text_color="black", fg_color="#f3de2c")
-            self.label.place(x = 60, y =30)
+            self.label.place(x = 100, y =30)
 
             self.gif_image = ImageTk.PhotoImage(self.gif.copy())
             self.gif_id = self.gif_canvas.create_image(200, 180, image=self.gif_image, anchor=tk.CENTER)
@@ -66,7 +66,7 @@ class CountdownPage(ctk.CTk):
             self.gif_canvas.itemconfig(self.gif_id, image=self.gif_image)
             self.frame_count += 1
 
-            if (time.time() - self.start_time<5):
+            if (time.time() - self.start_time<4):
                 self.after(25, self.animate_gif)
             else:
                 quiz_page_object = QuizPage(self.parent_frame,self.add_frame_method,self.navigate_frame_method,"Quiz Page")

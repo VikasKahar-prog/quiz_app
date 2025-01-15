@@ -102,29 +102,27 @@ class QuizPage(ctk.CTk):
     def create_widgets(self):
         self.question_frame = ctk.CTkFrame(self.quiz_page, width = 1300, height = 800, fg_color="#003049", bg_color="#ffbe0b")
 
-        self.question_label = ctk.CTkLabel(self.question_frame, text="", font = ("Helvetica", 20))
-        self.question_label.place(x = 700, y = 150)
+        self.question_label = ctk.CTkLabel(self.question_frame, text="", font = ("Helvetica", 20), text_color="white")
+        self.question_label.place(x = 700, y = 100)
 
         self.image_label = ctk.CTkLabel(self.question_frame, text = "")
-        self.image_label.place(x = 150, y = 150)
+        self.image_label.place(x = 150, y = 100)
 
-        self.question_number_label = ctk.CTkLabel(self.question_frame, text=f"", font=("Arial", 20, "bold"))
+        self.question_number_label = ctk.CTkLabel(self.question_frame, text=f"", font=("Arial", 20, "bold"), text_color="white")
         self.question_number_label.place(x = 20, y = 20)
 
         self.option_buttons = []
         for i in range(4):
             button = ctk.CTkButton(self.question_frame, text = "", width=300,height = 40, command = lambda i = i: self.check_answer(i), corner_radius=10,border_width = 2,border_color = "#390099", font=("Verdana Pro", 18), fg_color="#70d6ff", text_color="#003049", hover_color="#ff70a6")
-            button.place(x = 700, y = 230 + i * 70)
+            button.place(x = 700, y = 180 + i * 70)
             self.option_buttons.append(button)
 
-        self.timer_label = ctk.CTkLabel(self.question_frame, text=f"Time Left: {self.remaining_time}", font=("Arial", 20, "bold"))
+        self.timer_label = ctk.CTkLabel(self.question_frame, text=f"Time Left: {self.remaining_time}", font=("Arial", 20, "bold"), text_color="white")
         self.timer_label.place(x = 1150, y = 20)
         
-        self.next_button = ctk.CTkButton(self.question_frame, text="NEXT", command=self.next_question, height=38, width=150, corner_radius=10, font=("Arial", 20, "bold"), border_width=2, border_color="#ffb703", fg_color="#f77f00", text_color="black", hover_color="#ffbf69")
-        self.next_button.place(x = 1120, y = 580)
-
-        # self.next_button = ctk.CTkButton(self.question_frame, text="NEXT", command=self.next_question, height=38, width=150, corner_radius=10, font=("Arial", 20, "bold"), border_width=2, border_color="#ffb703", fg_color="#f77f00", text_color="black", hover_color="#ffbf69")
-        # self.next_button.place(x = 1120, y = 200)
+        
+        self.next_button = ctk.CTkButton(self.question_frame, text = "NEXT", width=150, height=38, corner_radius=10, font=("Arial", 20, "bold"), border_width=2,  border_color="#ffffff",fg_color="#ffb703", text_color="black", hover_color="#ffbf69",command=self.next_question)
+        self.next_button.place(x = 1120, y = 490)
     
         self.question_frame.pack(anchor = "center", pady = 100)
 
@@ -156,7 +154,7 @@ class QuizPage(ctk.CTk):
 
         self.width = 600
         self.height = 300
-        self.result_window.geometry('{}x{}+{}+{}'.format(self.width,self.height,600,300))
+        self.result_window.geometry('{}x{}+{}+{}'.format(self.width,self.height,400,200))
 
         self.popup_frame = ctk.CTkFrame(self.result_window,fg_color="transparent")
         self.popup_frame.pack(anchor = "center")
@@ -177,12 +175,12 @@ class QuizPage(ctk.CTk):
         self.score_val = tk.StringVar()
         self.score_val.set("80") 
         self.score_val = ctk.CTkLabel(self.popup_frame,textvariable = self.score_val,fg_color="transparent",font = ctk.CTkFont(family="Helvetica",size=40,weight="bold"))
-        self.score_val.pack(anchor = "center",pady = 5)
+        self.score_val.pack(anchor = "center",pady = 10)
 
         home_image = ctk.CTkImage(dark_image=Image.open(r'images/home.png'),size = (20,20))
 
         self.homebutton = ctk.CTkButton(self.popup_frame,corner_radius = 100,image=home_image,hover="disabled",fg_color = "#29B6F6",text = "Back to Home",text_color = "black",font = ctk.CTkFont(family = "Helvetica",weight = "normal",size = 15),command=self.go_to_home)
-        self.homebutton.pack(side = "bottom",anchor = "center",pady = (0,20),ipadx = 10,ipady = 10)
+        self.homebutton.pack(side = "bottom",anchor = "center",pady = 40,ipadx = 10,ipady = 10)
 
         # self.quiz_page.configure(state = "disabled")
 
