@@ -27,14 +27,14 @@ class HomePage(ctk.CTk):
         
         self.bgimage = ctk.CTkImage(dark_image=Image.open("images/img1.jpg"),size=(400, 400))
         self.bglabel = ctk.CTkLabel(self.home_frame,image = self.bgimage,text = "",bg_color="transparent")
-        self.bglabel.pack()
+        self.bglabel.pack(anchor='w',padx=100,pady=80)
 
         self.logo_frame = ctk.CTkFrame(self.home_frame, fg_color="#001d3d")
         self.logo_image = ctk.CTkImage(dark_image=Image.open("images/Screenshot_2025-01-11_153522-removebg-preview.png"),size=(400, 100))
         self.logo_label = ctk.CTkLabel(self.logo_frame,image = self.logo_image,text = "")
         self.logo_label.pack()
 
-        self.logo_frame.place(x = 100, y = 600)
+        self.logo_frame.pack(anchor='w',padx=100)
 
         self.text_frame = ctk.CTkFrame(self.home_frame, fg_color="#ffbe0b", bg_color="#ffbe0b")
         self.text1 = ctk.CTkLabel(self.text_frame, text="Let's play", text_color="#001d3d", font=ctk.CTkFont(family="jokerman",weight="bold", size=40))
@@ -47,7 +47,7 @@ class HomePage(ctk.CTk):
         self.start_button.place(x = 900, y = 430)
 
         self.leader_board_image = ctk.CTkImage(dark_image=Image.open(r"images/winner.png"), size=(100, 100))
-        self.ld_board_button = ctk.CTkButton(self.home_frame, text="", image=self.leader_board_image, fg_color="#ffbe0b", bg_color="#ffbe0b", hover=False, cursor = "hand2")
+        self.ld_board_button = ctk.CTkButton(self.home_frame, text="", image=self.leader_board_image, fg_color="#ffbe0b", bg_color="#ffbe0b", hover=False, cursor = "hand2",command=self.navigate_screen_to_leaderboard)
         self.ld_board_button.place(x = 1400, y = 30)
 
     def add_frames(self,name,frame_object):
