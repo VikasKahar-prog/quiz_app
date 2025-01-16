@@ -4,6 +4,12 @@
         "image": "images/cpu.png",
         "options": ["Memory", "Processor", "Storage", "Input Device"],
         "answer": 1
+    },
+    {
+        "question": "What does RAM stand for?",
+        "image": "images/ram.png",
+        "options": ["Random Access Memory", "Read Only Memory", "Read And Write Memory", "Remote Access Memory"],
+        "answer": 0
     }
 ]
 

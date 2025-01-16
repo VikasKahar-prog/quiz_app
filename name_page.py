@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import messagebox
 from start_page import CountdownPage
 from PIL import Image,ImageTk
+import mysql.connector as mycon
 
 class NamePage(ctk.CTk):
     def __init__(self,parent_frame,add_frame,navigate_frame,newtitle):
@@ -17,6 +18,7 @@ class NamePage(ctk.CTk):
         self.geometry('{}x{}+{}+{}'.format(self.width,self.height,0,0))
         self.title(self.newtitle)
         #self.config(bg="#ffbe0b")
+        # self.shared_name = self.name_entry.get()
 
         self.bind("<f>",self.toggle_fullscreen)
 
@@ -52,9 +54,22 @@ class NamePage(ctk.CTk):
         self.overrideredirect(True)
 
     def checkUser(self):
-        if self.name_value.get() == "" or self.name_value.get() == "Enter your name:":
+        name = self.name_value.get()
+        if name == "" or name == "Enter your name:":
             messagebox.showwarning(title="Warning",message="Please enter your name:")
         else:
+            try:
+                con = mycon.connect(host = "localhost", username = "root", password = "root", port = 3307, database = "quiz_app")
+                cur = con.cursor()
+                insert_query = "insert into leaderboard(name) values(%s)"
+                insert_values = (name,)
+                cur.execute(insert_query, insert_values)
+                con.commit()
+                print(f"{cur.rowcount} record inserted")
+                con.close()
+            except Exception as e:
+                print("Error : ", e)
+
             start_page_object =  CountdownPage(self.parent_frame,self.add_frame_method,self.navigate_frame_method,"Start Page")
             self.navigate_frame_method("namepage","startpage")
 

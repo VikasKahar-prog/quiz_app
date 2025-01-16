@@ -3,6 +3,8 @@ import tkinter as tk
 from PIL import Image,ImageTk
 from popup import PopUp
 import json
+import mysql.connector as mycon
+import time
 
 
 class QuizPage(ctk.CTk):
@@ -18,6 +20,7 @@ class QuizPage(ctk.CTk):
         self.geometry('{}x{}+{}+{}'.format(self.width,self.height,-10,0))
         self.title(self.newtitle)
         #self.config(bg="#ffbe0b")
+    
 
         self.quiz_page = ctk.CTkFrame(self.parent_frame,fg_color="#ffbe0b")
         self.quiz_page.pack(fill = "both",expand = True)
@@ -32,6 +35,8 @@ class QuizPage(ctk.CTk):
         self.selected_option = None
 
         self.create_widgets()
+        self.start_time = time.time()
+
         self.start_timer()
 
     def load_questions(self):
@@ -159,6 +164,35 @@ class QuizPage(ctk.CTk):
         self.popup_frame = ctk.CTkFrame(self.result_window,fg_color="transparent")
         self.popup_frame.pack(anchor = "center")
 
+        self.elapsed_time = time.time() - self.start_time
+        print(self.elapsed_time)
+
+        def save_score():
+            try:
+                con = mycon.connect(host = "localhost", username = "root", password = "root", port = 3307, database = "quiz_app")
+                cur = con.cursor()
+                
+                cur.execute('select max(srno) from leaderboard')
+                max_srno = cur.fetchone()[0]
+
+                if max_srno is not None:
+                    update_query = "update leaderboard set score = %s, time = %s where srno = %s"
+                    update_value = (self.score, self.elapsed_time ,max_srno)
+                    cur.execute(update_query, update_value)
+                    con.commit()
+                    print(f"{cur.rowcount} record updated")
+
+                # con.close()
+            except Exception as e:
+                print("Error quiz page : ", e)
+            finally:
+                con.close()
+
+        save_score()
+
+        
+
+
         #self.add_frame_method("popup",self.popup_frame)
 
         # self.mainframe = ctk.CTkFrame(result_window,border_width=1,border_color="#ffffff",fg_color="#edede9",bg_color="#edede9")
@@ -173,7 +207,7 @@ class QuizPage(ctk.CTk):
         self.score_lbl.pack(anchor = "center",pady = 10)
         
         self.score_val = tk.StringVar()
-        self.score_val.set("80") 
+        self.score_val.set(f"{self.score}") 
         self.score_val = ctk.CTkLabel(self.popup_frame,textvariable = self.score_val,fg_color="transparent",font = ctk.CTkFont(family="Helvetica",size=40,weight="bold"))
         self.score_val.pack(anchor = "center",pady = 10)
 
